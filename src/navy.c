@@ -53,7 +53,8 @@ vector_t receive_response(char **game_map)
     s.signal_usr1 = 0;
     s.signal_usr2 = 0;
     my_printf("%c%c: ", v.x + 'A', v.y + '1');
-    if (game_map[v.y][v.x] == '.' || game_map[v.y][v.x] == 'o') {
+    if (game_map[v.y][v.x] == '.' || game_map[v.y][v.x] == 'o'
+        || game_map[v.y][v.x] == 'x') {
         update_game_map(game_map, &v, false);
         kill_with_delay(s.signal_pid, SIGUSR2, 10000);
     }

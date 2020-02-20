@@ -46,6 +46,7 @@ void update_game_map(char **map, vector_t *v, bool hit)
     }
     else {
         my_putstr("missed\n\n");
-        map[v->y][v->x] = 'o';
+        if (map[v->y][v->x] == '.')
+            map[v->y][v->x] = 'o';
     }
 }
