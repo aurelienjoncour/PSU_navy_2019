@@ -25,6 +25,7 @@ int player_1(char **map_enemy, char **game_map)
         my_putstr("waiting for enemy's attack...\n");
         v = receive_response(game_map);
     }
+    free_2d_array(map_enemy);
     return 0;
 }
 
@@ -48,6 +49,7 @@ int player_2(char **map_enemy, char **game_map)
             return EXIT_ERROR;
         send_response(v, map_enemy);
     }
+    free_2d_array(map_enemy);
     return 0;
 }
 
