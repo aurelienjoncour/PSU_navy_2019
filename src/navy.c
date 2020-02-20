@@ -53,7 +53,7 @@ vector_t receive_response(char **game_map)
     s.signal_usr1 = 0;
     s.signal_usr2 = 0;
     my_printf("%c%c: ", v.x + 'A', v.y + '1');
-    if (game_map[v.y][v.x] == '.') {
+    if (game_map[v.y][v.x] == '.' || game_map[v.y][v.x] == 'o') {
         update_game_map(game_map, &v, false);
         kill_with_delay(s.signal_pid, SIGUSR2, 10000);
     }
@@ -67,7 +67,7 @@ vector_t receive_response(char **game_map)
 int navy(char **game_map, pid_t enemy_pid)
 {
     struct sigaction act = {0};
-    char **map_enemy = malloc(sizeof(char *) * MAP_SIZE);
+    char **map_enemy = malloc(sizeof(char *) * (MAP_SIZE + 1));
 
     if (map_enemy == NULL)
         return EXIT_ERROR;
