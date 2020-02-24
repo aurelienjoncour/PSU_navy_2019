@@ -1,15 +1,21 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_putstr
+** CPool_Day04_2019
 ** File description:
-** display one-by-one the caracters of a string
+** Task02
 */
 
-#include <unistd.h>
-#include "my_printf.h"
+#include "my.h"
+
+int my_putchar(char c);
 
 int my_putstr(char const *str)
 {
-    write(1, str, my_strlen(str));
-    return (0);
+    int len = my_strlen(str);
+
+    while (*str != '\0') {
+        my_putchar(*str);
+        str++;
+    }
+    return len;
 }

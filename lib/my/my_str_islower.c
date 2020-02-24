@@ -1,18 +1,16 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_str_islower
+** CPool_Day06_2019
 ** File description:
-** return 1 if the string only contains lower alphabetical char
+** task14
 */
-
-int my_strlen(char const *str);
 
 int my_str_islower(char const *str)
 {
     int i = 0;
 
-    while (i < my_strlen(str)) {
-        if (str[i] < 'a' || str[i] > 'z')
+    while (str[i] != '\0') {
+        if (str[i] > 'z' || str[i] < 'a')
             return (0);
         i++;
     }

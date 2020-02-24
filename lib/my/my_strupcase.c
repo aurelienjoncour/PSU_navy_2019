@@ -1,19 +1,17 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_strupcase.c
+** CPool_Day06_2019
 ** File description:
-** puts every letter of every word in it in uppercase
+** Task08
 */
-
-int my_strlen(char const *str);
 
 char *my_strupcase(char *str)
 {
     int i = 0;
 
-    while (i < my_strlen(str)) {
-        if (str[i] >= 'a' && str[i] <= 'z')
-            str[i] += 'A' - 'a';
+    while (str[i] != '\0') {
+        if (str[i] <= 'z' && str[i] >= 'a')
+            str[i] += ('A' - 'a');
         i++;
     }
     return (str);

@@ -1,23 +1,21 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_strncmp
+** CPool_Day06_2019
 ** File description:
-** like my_strcmp but til n caracters
+** Task07
 */
 
-int my_strlen(char const *str);
-
-int my_strncmp(char const *s1, char const *s2, int nb)
+int my_strncmp(char const *s1, char const *s2, int n)
 {
     int i = 0;
 
-    while (i < nb && (s1[i] != '\0' || s2[i] != '\0')) {
-        if (s1[i] < s2[i])
+    while (i < n) {
+        if ((s1[i] - s2[i]) != 0) {
             return (s1[i] - s2[i]);
-        else if (s1[i] > s2[i])
-            return (s1[i] - s2[i]);
-        else
-            i++;
+        }
+        if (s1[i] == '\0' || s2[i] == '\0')
+            break;
+        i++;
     }
     return (0);
 }

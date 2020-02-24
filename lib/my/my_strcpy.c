@@ -1,18 +1,18 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_strcpy
+** CPool_Day06_2019
 ** File description:
-** return a copies of a string
+** Task01
 */
+
+char *my_strncpy(char *dest, char const *src, int n);
 
 char *my_strcpy(char *dest, char const *src)
 {
-    int i = 0;
+    int size = 0;
 
-    while (src[i] != '\0') {
-        dest[i] = src[i];
-        i++;
-    }
-    dest[i] = '\0';
-    return (dest);
+    while (src[size] != '\0')
+        size++;
+    size++;
+    return (my_strncpy(dest, src, size));
 }

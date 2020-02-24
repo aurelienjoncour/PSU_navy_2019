@@ -1,17 +1,15 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_str_isprintable.c
+** CPool_Day06_2019
 ** File description:
-** returns 1 if the string passed as parameters only contanis printable char
+** Task16
 */
-
-int my_strlen(char const *str);
 
 int my_str_isprintable(char const *str)
 {
     int i = 0;
 
-    while (i < my_strlen(str)) {
+    while (str[i] != '\0') {
         if (str[i] < 32 || str[i] > 126)
             return (0);
         i++;

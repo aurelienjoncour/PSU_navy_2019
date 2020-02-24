@@ -1,14 +1,16 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_swap
+** CPool_Day04_2019
 ** File description:
-** swap the content of two integers
+** Task01
 */
+
+int my_putchar(char c);
 
 void my_swap(int *a, int *b)
 {
-    int tmp = *a;
+    int temp = *a;
 
     *a = *b;
-    *b = tmp;
+    *b = temp;
 }

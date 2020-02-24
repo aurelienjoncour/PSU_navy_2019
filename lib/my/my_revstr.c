@@ -1,24 +1,22 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_revstr
+** CPool_Day06_2019
 ** File description:
-** return a reverse string
+** Task03
 */
-
-int my_strlen(char const *str);
 
 char *my_revstr(char *str)
 {
-    int i = 0;
-    int j = my_strlen(str) - 1;
-    int tmp = 0;
+    char temp;
+    int len = 0;
 
-    while (j > i) {
-        tmp = str[i];
-        str[i] = str[j];
-        str[j] = tmp;
-        i++;
-        j--;
+    while (str[len] != '\0')
+        len++;
+    len--;
+    for (int i = len; i > (len / 2); i--) {
+        temp = str[len - i];
+        str[len - i] = str[i];
+        str[i] = temp;
     }
     return (str);
 }

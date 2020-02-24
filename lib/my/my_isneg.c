@@ -1,17 +1,18 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_isneg
+** CPool_Day03_2019
 ** File description:
-** print N if the integer is negative P if the integer is positive or null
+** .
 */
 
-void my_putchar(char c);
+int my_putchar(char c);
 
-int my_isneg(int nb)
+int my_isneg(int n)
 {
-    if (nb < 0)
+    if (n < 0) {
         my_putchar('N');
-    else if (nb >= 0)
+    } else {
         my_putchar('P');
-    return (0);
+    }
+    return 0;
 }

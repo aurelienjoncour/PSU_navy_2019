@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 
-int my_compute_square_root(int nb)
+int my_sqrt(int nb)
 {
     int result = 1;
 

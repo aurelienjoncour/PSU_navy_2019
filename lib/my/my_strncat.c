@@ -1,19 +1,18 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_strncat
+** CPool_Day07_2019
 ** File description:
-** concatenates two string till n
+** Task03
 */
-
-int my_strlen(char const *str);
 
 char *my_strncat(char *dest, char const *src, int nb)
 {
-    int i = my_strlen(dest);
+    int i = 0;
     int j = 0;
 
-    dest[i] = 0;
-    while (j < nb && j < my_strlen(src)) {
+    while (dest[i] != '\0')
+        i++;
+    while (src[j] != '\0' && j < nb) {
         dest[i] = src[j];
         i++;
         j++;

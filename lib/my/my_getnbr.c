@@ -1,69 +1,92 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_getnbr
+** CPool_Day04_2019
 ** File description:
-** returns a number sent to the function as a string
+** Task05 - Returns a number, sent to the function as a string
 */
 
-#include <limits.h>
-
-int my_strlen(char const *str);
-
-int my_put_nbr(int nb);
-
-static int it_is_neg(char const *str, int len, int *start)
-{
-    int neg = 1;
-
-    while (*start < len && !(str[*start] >= '0' && str[*start] <= '9')) {
-        if (str[*start] == '-')
-            neg = neg * -1;
-        *start = *start + 1;
-    }
-    return (neg);
-}
-
-static int too_fit(int start, int end)
-{
-    if ( end - start > 10)
-        return (1);
-    return (0);
-}
-
-static int my_char_isalpha(char const c)
-{
-    if ((c >= 'A' && c <= 'Z' ) || (c >= 'a' && c <= 'b'))
-        return (0);
-    return 1;
-}
-
-static long check_too_long(long nb)
-{
-    if (nb > INT_MAX || nb < INT_MIN)
-        return (0);
-    return (nb);
-}
+static int pow_t5(int x, int n);
+static void get_data_nbr(char const *str, int *i_first_nbr, int *size_nbr);
+static int check_toobig(char const *str, int size_nbr, char symb);
+static char define_symbol(int const i_first_nbr, char const *str);
 
 int my_getnbr(char const *str)
 {
-    int start = 0;
-    int end = 0;
-    long nb = 0;
-    int dix = 1;
-    int neg = it_is_neg(str, my_strlen(str), &start);
+    int i_first_nbr = -1;
+    int size_nbr = 0;
+    char symb = '+';
+    int nbr = 0;
 
-    end = start;
-    if (my_char_isalpha(str[0]) == 0)
+    get_data_nbr(str, &i_first_nbr, &size_nbr);
+    symb = define_symbol(i_first_nbr, str);
+    if (size_nbr > 10)
         return (0);
-    while (end < my_strlen(str) && (str[end] >= '0' && str[end] <= '9'))
-        end++;
-    if (too_fit(start, end) != 0)
-        return (0);
-    end--;
-    while (end >= start) {
-        nb += (str[end] - 48) * dix;
-        dix *= 10;
-        end--;
+    if (size_nbr == 10) {
+        if (check_toobig((str + i_first_nbr), size_nbr, symb) == 1)
+            return (0);
     }
-    return ((int) check_too_long(nb *= neg));
+    for (int i = 0; i < size_nbr; i++)
+        nbr += (str[i + i_first_nbr] - '0') * pow_t5(10, size_nbr - i - 1);
+    if (symb == '-')
+        return (-nbr);
+    else
+        return (nbr);
+}
+
+static char define_symbol(int const i_first_nbr, char const *str)
+{
+    int nb_n = 0;
+
+    for (int i = (i_first_nbr - 1); i >= 0; i--) {
+        if (str[i] == '-')
+            nb_n++;
+        else if (str[i] != '+')
+            break;
+    }
+    if (nb_n % 2 != 0)
+        return '-';
+    return '+';
+}
+
+static int check_toobig(char const *str, int size_nbr, char symb)
+{
+    char max_nbr_pos[10] = "2147483647";
+    char max_nbr_neg[10] = "2147483648";
+
+    for (int i = 0; i < size_nbr; i++) {
+        if (symb == '+' && *(str + i) > max_nbr_pos[i]) {
+            return (1);
+        } else if (symb == '-' && *(str + i) > max_nbr_neg[i]) {
+            return (1);
+        }
+        if (*(str + i) < max_nbr_pos[i])
+            return (0);
+    }
+    return (0);
+}
+
+static void get_data_nbr(char const *str, int *i_first_nbr, int *size_nbr)
+{
+    int i = 0;
+
+    while (*(str + i) != '\0') {
+        if (*i_first_nbr != -1 && *(str + i) >= '0' && *(str + i) <= '9') {
+            (*size_nbr)++;
+        } else if (*(str + i) >= '1' && *(str + i) <= '9') {
+            *i_first_nbr = i;
+            (*size_nbr)++;
+        }
+        if (*i_first_nbr != (-1) && (*(str + i) < '0' || *(str + i) > '9'))
+            break;
+        i++;
+    }
+}
+
+static int pow_t5(int x, int n)
+{
+    if (n == 0) {
+        return (1);
+    } else {
+        return (x * pow_t5(x, n - 1));
+    }
 }

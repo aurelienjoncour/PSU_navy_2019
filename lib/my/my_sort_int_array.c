@@ -1,25 +1,28 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_sort_int_array.c
+** CPool_Day04_2019
 ** File description:
-** sorts an integers array in ascending order
+** Task06
 */
 
 void my_swap(int *a, int *b);
+static void swap_if_greater(int *array, int i, char *is_sorted);
 
-void my_sort_int_array(int *tab, int size)
+void my_sort_int_array(int *array, int size)
 {
-    int i = 1;
-    int j = 0;
-    int var = 0;
+    char is_sorted = 'T';
 
-    while (i  < size) {
-        var = tab[i];
-        j = i - 1;
-        while (j >= 0 && tab[j] > var) {
-            my_swap(&tab[j], &tab[j+1]);
-            j = j -1;
-        }
-        i++;
+    do {
+        is_sorted = 'T';
+        for (int i = 0; i < (size - 1); i++)
+            swap_if_greater(array, i, &is_sorted);
+    } while (is_sorted == 'F');
+}
+
+static void swap_if_greater(int *array, int i, char *sorted)
+{
+    if (array[i] > array[i + 1]) {
+        my_swap(&array[i], &array[i + 1]);
+        *sorted = 'F';
     }
 }

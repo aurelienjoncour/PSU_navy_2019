@@ -1,28 +1,28 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_strstr
+** CPool_Day06_2019
 ** File description:
-** return a pointer at the begining of the occurence
+** Task05
 */
-#include <stdio.h>
-#include <stddef.h>
 
-int my_strlen(char const *str);
+#include <unistd.h>
+
+int my_strncmp(char const *s1, char const *s2, int n);
 
 char *my_strstr(char *str, char const *to_find)
 {
     int i = 0;
-    int j = 0;
+    int len_fd = 0;
 
-    while (i < my_strlen(str)) {
-        if (str[i] == to_find[j])
-            j++;
-        else
-            j = 0;
-        i++;
-        if (j == my_strlen(to_find) - 1 && my_strlen(to_find)) {
+    if (to_find[0] == '\0')
+        return (str);
+    while (to_find[len_fd] != '\0')
+        len_fd++;
+    while (str[i] != '\0') {
+        if (str[i] == to_find[0] && my_strncmp(&str[i], to_find, len_fd) == 0) {
             return (&str[i]);
         }
+        i++;
     }
-    return 0;
+    return (NULL);
 }

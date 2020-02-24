@@ -1,12 +1,11 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_strncpy
+** CPool_Day06_2019
 ** File description:
-** copies n caracters of a string into another
+** Task02
 */
-#include <stdio.h>
 
-int my_strlen(char const *str);
+#include "my.h"
 
 char *my_strncpy(char *dest, char const *src, int nb)
 {

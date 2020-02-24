@@ -1,15 +1,20 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_find_prime_sup
+** CPool_Day05_2019
 ** File description:
-** return the plus super proche prime number
+** Task07
 */
 
 int my_is_prime(int nb);
 
 int my_find_prime_sup(int nb)
 {
-    while (my_is_prime(nb) != 1)
-        nb++;
-    return (nb);
+    int pr = nb;
+
+    while (my_is_prime(pr) == 0) {
+        if (pr == 2147483647)
+            return (0);
+        pr++;
+    }
+    return (pr);
 }

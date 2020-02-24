@@ -1,44 +1,58 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_put_nbr
+** CPool_Day03_2019
 ** File description:
-** display the number given as a parameter
+** void
 */
 
-#include "my_printf.h"
+void my_putchar(char c);
+static long int poww3(int x, int n);
 
-static void put_nb_min(void)
+int my_put_nbr_ul(unsigned long long int nb)
 {
-    my_putstr("-2147483648");
+    int i = 0;
+    int len_wrote = 0;
+    char c;
+
+    while (nb / poww3(10, i) >= 10) {
+        i++;
+    }
+    len_wrote += i + 1;
+    while (i >= 0) {
+        c = ((nb / poww3(10, i)) % 10) + '0';
+        my_putchar(c);
+        i--;
+    }
+    return (len_wrote);
 }
 
-int my_put_nbr(int nb)
+int my_put_nbr(long long int nb)
 {
-    if (nb == -2147483648) {
-        put_nb_min();
-        return (0);
-    }
+    int i = 0;
+    int len_wrote = 0;
+    char c;
+
     if (nb < 0) {
-        my_putstr("-");
-        nb = nb * -1;
-    } else if (nb == 0) {
-        my_putstr("0");
-        return (0);
+        my_putchar('-');
+        nb = -nb;
+        len_wrote++;
     }
-    if (nb/10 > 0)
-        my_put_nbr(nb/10);
-    my_putchar('0' + nb % 10);
-    return (0);
+    while (nb / poww3(10, i) >= 10) {
+        i++;
+    }
+    len_wrote += i + 1;
+    while (i >= 0) {
+        c = ((nb / poww3(10, i)) % 10) + '0';
+        my_putchar(c);
+        i--;
+    }
+    return (len_wrote);
 }
-
-int my_put_unsigned_int(unsigned int nb)
+static long int poww3(int x, int n)
 {
-    if (nb == 0) {
-        my_putstr("0");
-        return 0;
+    if (n == 0) {
+        return (1);
+    } else {
+        return (x * poww3(x, n-1));
     }
-    if (nb / 10 > 0)
-        my_put_nbr(nb / 10);
-    my_putchar('0' + nb % 10);
-    return 0;
 }

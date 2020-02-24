@@ -5,14 +5,14 @@
 ** Task04
 */
 
-int my_compute_power_rec(int nb, int p)
+int my_power_rec(int nb, int p)
 {
     int result = 1;
 
     if (nb < 0 && p % 2 == 0)
         nb = (-nb);
     if (p > 1) {
-        result = my_compute_power_rec(nb, (p - 1));
+        result = my_power_rec(nb, (p - 1));
     } else if (p < 0) {
         return (0);
     }
