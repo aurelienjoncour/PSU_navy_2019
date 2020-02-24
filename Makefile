@@ -11,17 +11,25 @@ INC_DIR		=	include/
 
 LIB_DIR		=	lib/my/
 
-SRC			=	$(SRC_DIR)main.c				\
-				$(SRC_DIR)get_next_line.c		\
-				$(SRC_DIR)read_entiere_file.c	\
-				$(SRC_DIR)usage.c				\
-				$(SRC_DIR)word_array.c			\
-				$(SRC_DIR)error_handling.c		\
-				$(SRC_DIR)game.c				\
-				$(SRC_DIR)game_map.c			\
-				$(SRC_DIR)parse_map.c			\
-				$(SRC_DIR)navy.c				\
-				$(SRC_DIR)player.c
+SRC			=	$(SRC_DIR)main.c					\
+				$(SRC_DIR)usage.c					\
+				$(SRC_DIR)word_array.c				\
+				$(SRC_DIR)get_next_line.c			\
+				$(SRC_DIR)map/read_entiere_file.c	\
+				$(SRC_DIR)map/error_handling.c		\
+				$(SRC_DIR)map/game_map_check.c		\
+				$(SRC_DIR)map/game_map_load.c		\
+				$(SRC_DIR)map/game_board_fill.c		\
+				$(SRC_DIR)map/parse_map.c			\
+				$(SRC_DIR)map/fill_gameboard_data.c \
+				$(SRC_DIR)game/game_prepare.c		\
+				$(SRC_DIR)game/game_map_update.c	\
+				$(SRC_DIR)game/game_check_end.c		\
+				$(SRC_DIR)game/game_player_input.c	\
+				$(SRC_DIR)game/game_display.c		\
+				$(SRC_DIR)game/communicate.c		\
+				$(SRC_DIR)game/navy.c				\
+				$(SRC_DIR)game/player.c
 
 OBJ			=	$(SRC:.c=.o)
 

@@ -52,10 +52,3 @@ int player_2(char **map_enemy, char **game_map)
     free_2d_array(map_enemy);
     return 0;
 }
-
-void wait_connection(void)
-{
-    my_putstr("waiting for enemy connection...\n\n");
-    while (s.signal_pid == 0);
-    my_putstr("enemy connected\n\n");
-}

@@ -2,15 +2,16 @@
 ** EPITECH PROJECT, 2020
 ** PSU_navy_2019
 ** File description:
-** navy
+** communicate : signal
 */
 
 #include "navy.h"
 
-signal_info_t s = {0};
+extern signal_info_t s;
 
-static void handler (int sig, siginfo_t *siginfo, void *context)
+void handler (int sig, siginfo_t *siginfo, void *context)
 {
+    (void)context;
     if (sig == SIGUSR2 && s.signal_pid == 0) {
         s.signal_pid = siginfo->si_pid;
         return;
@@ -65,26 +66,18 @@ vector_t receive_response(char **game_map)
     return v;
 }
 
-int navy(char **game_map, pid_t enemy_pid)
+void wait_connection(void)
 {
-    struct sigaction act = {0};
-    char **map_enemy = malloc(sizeof(char *) * (MAP_SIZE + 1));
+    my_putstr("waiting for enemy connection...\n\n");
+    while (s.signal_pid == 0);
+    my_putstr("enemy connected\n\n");
+}
 
-    if (map_enemy == NULL)
-        return EXIT_ERROR;
-    if (fill_game_board(map_enemy))
-        return EXIT_ERROR;
-    s.signal_pid = enemy_pid;
-    act.sa_sigaction = &handler;
-    act.sa_flags = SA_SIGINFO;
-    sigaction(SIGUSR1, &act, NULL);
-    sigaction(SIGUSR2, &act, NULL);
-    if (s.signal_pid == 0)
-        wait_connection();
-    kill_with_delay(s.signal_pid, SIGUSR2, 10000);
-    if (s.signal_usr2 == 1)
-        return player_2(map_enemy, game_map);
-    else
-        return player_1(map_enemy, game_map);
-    return 0;
+int kill_with_delay(pid_t pid, int signal, __useconds_t delay)
+{
+    int foo;
+
+    foo = kill(pid, signal);
+    usleep(delay);
+    return foo;
 }

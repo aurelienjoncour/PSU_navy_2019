@@ -44,10 +44,12 @@ bool error_data(char **data_ship)
 {
     int length;
 
-    if (word_array_len(data_ship) != 3)
+    if (word_array_len(data_ship) != 3) {
         return true;
-    if (check_data_len(data_ship))
+    }
+    if (check_data_len(data_ship)) {
         return true;
+    }
     length = my_getnbr(data_ship[0]);
     if (length < 2 || length > 5)
         return true;
