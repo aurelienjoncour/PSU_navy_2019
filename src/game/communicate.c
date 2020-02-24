@@ -9,7 +9,7 @@
 
 extern signal_info_t s;
 
-void handler (int sig, siginfo_t *siginfo, void *context)
+void handler(int sig, siginfo_t *siginfo, void *context)
 {
     (void)context;
     if (sig == SIGUSR2 && s.signal_pid == 0) {
