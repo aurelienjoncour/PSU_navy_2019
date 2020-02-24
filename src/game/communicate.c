@@ -22,23 +22,23 @@ void handler(int sig, siginfo_t *siginfo, void *context)
         s.signal_usr2++;
 }
 
-void send_response(vector_t v, char **map_enemy)
+void send_response(vector_t *v, char **map_enemy)
 {
-    for (size_t i = 0; i < v.x; i++)
+    for (size_t i = 0; i < v->x; i++)
         kill_with_delay(s.signal_pid, SIGUSR1, 10000);
     kill_with_delay(s.signal_pid, SIGUSR2, 10000);
-    for (size_t i = 0; i < v.y; i++)
+    for (size_t i = 0; i < v->y; i++)
         kill_with_delay(s.signal_pid, SIGUSR1, 10000);
     kill_with_delay(s.signal_pid, SIGUSR2, 10000);
-    my_printf("%c%c: ", v.x + 'A', v.y + '1');
+    my_printf("%c%c: ", v->x + 'A', v->y + '1');
     while (s.signal_usr1 == 0 && s.signal_usr2 == 0);
     if (s.signal_usr1 == 1) {
         s.signal_usr1 = 0;
-        update_game_map(map_enemy, &v, true);
+        update_game_map(map_enemy, v, true);
     }
     if (s.signal_usr2 == 1) {
         s.signal_usr2 = 0;
-        update_game_map(map_enemy, &v, false);
+        update_game_map(map_enemy, v, false);
     }
 }
 

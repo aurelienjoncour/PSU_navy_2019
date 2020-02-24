@@ -57,12 +57,13 @@ bool write_attack(vector_t *v);
 
 int kill_with_delay(pid_t pid, int signal, __useconds_t delay);
 vector_t receive_response(char **game_map);
-void send_response(vector_t v, char **map_enemy);
+void send_response(vector_t *v, char **map_enemy);
 void wait_connection(void);
 void handler (int sig, siginfo_t *siginfo, void *context);
 
-int player_1(char **map_enemy, char **game_map);
-int player_2(char **map_enemy, char **game_map);
-
+//int player_1(char **map_enemy, char **game_map);
+//int player_2(char **map_enemy, char **game_map);
+int player(char **map_enemy, char **game_map, int player_id);
+int player_init(int player_id);
 
 #endif /* !NAVY_H_ */

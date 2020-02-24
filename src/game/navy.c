@@ -19,9 +19,15 @@ int navy(char **game_map, pid_t enemy_pid)
         my_putstr_error("navy : invalid game map\n");
         return EXIT_ERROR;
     }
+    /*
     if (s.signal_usr2 == 1)
         return player_2(map_enemy, game_map);
     else
         return player_1(map_enemy, game_map);
+    */
+    if (s.signal_usr2 == 1)
+        return player(map_enemy, game_map, 2);
+    else
+        return player(map_enemy, game_map, 1);
     return 0;
 }

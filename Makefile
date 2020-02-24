@@ -29,7 +29,8 @@ SRC			=	$(SRC_DIR)main.c					\
 				$(SRC_DIR)game/game_display.c		\
 				$(SRC_DIR)game/communicate.c		\
 				$(SRC_DIR)game/navy.c				\
-				$(SRC_DIR)game/player.c
+				$(SRC_DIR)game/player.c				\
+				$(SRC_DIR)game/player_init.c		\
 
 OBJ			=	$(SRC:.c=.o)
 
