@@ -78,6 +78,7 @@ fclean:		clean
 re:	fclean all
 
 tests_run:
+	make -C $(LIB_DIR)
 	gcc -o $(NAME) $(UTSRC) -I./include -L./lib/my -lmy -lcriterion --coverage && ./$(NAME)
 
 run:	all
