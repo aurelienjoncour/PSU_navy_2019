@@ -14,8 +14,8 @@ void free_2d_array(char **array);
 
 size_t word_array_len(char **array);
 
-char **word_array_dup(char **env);
+// char **word_array_dup(char **env);
 
-char **word_array_realloc(char **env);
+// char **word_array_realloc(char **env);
 
 #endif /* !WORD_ARRAY_H_ */
