@@ -20,3 +20,6 @@ DESCRIPTION
 In the bonus, the communication is realized with C socket.
 So two players can play the game on two different computers.
 
+# Team : Epitech First year students
+- Aurelien Joncour
+- Simon Racaud
