@@ -4,12 +4,12 @@
 - **Mark:** 100%
 
 **Groupe Member**
-- [@AurelienJoncour](github.com/aurelienjoncour)
-- [@SimonRacaud](github.com/simonracaud)
+- [@AurelienJoncour](https://github.com/aurelienjoncour)
+- [@SimonRacaud](https://github.com/simonracaud)
 
 # Subject
-Terminal version of a battleship game.
-The communication between game is realized with signal USR1 and USR2.
+Terminal version of a battleship game.  
+The communication between game is realized with signal USR1 and USR2.  
 # Usage
 ```
 ∼/B-PSU-200> ./navy -h
@@ -24,7 +24,7 @@ DESCRIPTION
 
 The file must contain 4 boats all of different sizes between 2 and 5  
 Each line represent a ship 
-(size):(First box):(Last box)
+(size):(First box):(Last box)  
 
 **Example:**
 
@@ -41,10 +41,10 @@ Each line represent a ship
 
 # Bonus
 
-In the bonus, the communication is realized with C socket.
-So two players can play the game on two different computers.
+In the bonus, the communication is realized with C socket.  
+So two players can play the game on two different computers.  
 
-- **Compilation** cd bonus; make -C client/ && make -C server/
-- **Usage** ./server/navy_server navy_positions
-            ./client/navy_client navy_positions server_ip
+- **Compilation:** cd bonus; make -C client/ && make -C server/  
+- **Usage:**  ./server/navy_server navy_positions  
+              ./client/navy_client navy_positions server_ip  
 
